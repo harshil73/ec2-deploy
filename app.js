@@ -1,14 +1,15 @@
-require("dotenv").config();
 const express = require("express");
 const app = express();
-const port = process.env.PORT || 3000;
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  return res.status(200).json({
-    message: "Hello From EC2 Server!",
-  });
-});
+const { PORT } = require("./src/config/env.config");
+const { logger } = require("./src/config/logger.config");
+const routes = require("./src/routes/index.route");
+require("./cron");
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+app.use(routes);
+
+app.listen(PORT, () => {
+  logger.verbose(`server is running on ${PORT}`);
 });
