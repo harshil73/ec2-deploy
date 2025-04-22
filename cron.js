@@ -2,7 +2,7 @@ const { Cron } = require("croner");
 const { logger } = require("./src/config/logger.config");
 const { getAllContact } = require("./src/controller/index.controller");
 
-logger.verbose(`**** In Croner ****`);
+logger.verbose(`**** Into the Croner ****`);
 const sync = new Cron(
   "0 11 * * *", // Cron expression for 8:00 AM daily
   { timezone: "Asia/Kolkata" },
