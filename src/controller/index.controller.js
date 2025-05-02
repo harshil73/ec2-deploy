@@ -33,7 +33,6 @@ const getAllContact = async (req, res) => {
     batchIndex++;
   } while (response.data.results.length >= 100);
   logger.verbose("**** Script Completed. Done With All Contacts ****");
-  // return res.send("Done With All Contact!!!");
 };
 
 module.exports = { getAllContact };
